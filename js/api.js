@@ -1,13 +1,9 @@
-//ARCHIVO PARA REALIZAR LOS FETCHS EN FUNCION DE LAS NECESIDADES
+//Basic URL from the API
+const BASE_URL = "http://rest.nbaapi.com/api/PlayerDataTotals/query?";
 
-
-//Recogemos la URL básica de la API
-const BASE_URL = "http://rest.nbaapi.com/api/PlayerDataAdvanced/"; 
-
-//Preparación de la función fetch general
+//Basic Fetch function
 async function fetchData(parameter) {
     try {
-        //Concateno la URL básica con el parámetro a buscar
         const finalURL = new URL (BASE_URL + parameter); 
         const response = await fetch(finalURL);
         if(!response.ok){
@@ -21,18 +17,39 @@ async function fetchData(parameter) {
     }
 }
 
-//BUSCAMOS JUGADORES POR NOMBRE
+//Function to search by name of player => gets all seasons of a player
 async function searchDataByName(playerName,section){
-    const parameter = "name/" + playerName;
+    const parameter = "playerName=" + playerName + "&sortBy=Season&ascending=false&pageSize=50";
     const listOfPlayers = await fetchData(parameter);
     section.addListFromArray(listOfPlayers);
 }
 
-//BUSCAMOS JUGADORES POR TEMPORADA
-async function searchDataBySeason(playerSeason,section){
-    const parameter = "season/" + playerSeason;
+//Function to search by season => gets all players of a unique season
+async function searchDataBySeason(seasonSearched,section){
+    const parameter = "season=" + seasonSearched + "&sortBy=PlayerName&ascending=true&pageSize=900";
     const listOfPlayers = await fetchData(parameter);
     section.addListFromArray(listOfPlayers);
 }
 
-export {searchDataByName, searchDataBySeason};
+//Function to search by position => gets the position in a unique season (default = current year)
+async function searchDataByPosition(seasonSearched,positionSearched,section){
+    const parameter = "season=" + seasonSearched + "&sortBy=PlayerName&ascending=true&pageSize=900";
+    const listOfPlayers = await fetchData(parameter);
+    section.addListBySeasonAndPosition(listOfPlayers,seasonSearched,positionSearched);
+}
+
+//Function to search squads => gets the squad for a team in a unique season
+async function searchDataByTeam(seasonSearched,teamSearched,section){
+   /* const parameter = "season=" + seasonSearched + "&team=" + teamSearched + "&sortBy=PlayerName&ascending=true&pageSize=30";
+    const listOfPlayers = await fetchData(parameter);
+    section.addListFromArray(listOfPlayers);*/
+} 
+
+//Function to search current squad => gets the current squad from a team
+async function searchDataCurrentSquad(team,section){
+    const parameter = "season=2025&team=" + team + "&sortBy=PlayerName&ascending=true&pageSize=30";
+    const listOfPlayers = await fetchData(parameter);
+    section.addListFromArray(listOfPlayers);
+}
+
+export { searchDataByName, searchDataBySeason, searchDataByPosition, searchDataCurrentSquad, searchDataByTeam };

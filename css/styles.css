@@ -3,7 +3,13 @@
     padding: 0%;
 }
 
-.team_shield{
+.team-shield{
+    background-color: beige;
+    width: 5%;
+    height: 5%;
+}
+
+.player-attributes img{
     background-color: beige;
     width: 5%;
     height: 5%;
