@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/styles.css" rel="stylesheet">
+    <script defer type="module" src="./js/index.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="./assets/logo.png" alt="logo NBA" id="logoNBA"/>
+        <button id="fav-section">Your Team</button>
+    </header>
+
+    <main>
+        <section id="search-controls">
+            <button id="search-name" value="name">Name</button>
+            <button id="search-season" value="season">Season</button>
+            <button id="search-position" value="position">Position</button>
+            <button id="search-team" value="team">Team</button>
+        </section>
+
+        <section id="search-section-by-name">
+            <input type="text" id="name-introduced" placeholder="Introduce a name...">
+        </section>
+
+        <section id="search-section-by-season">
+            <select id="season-introduced-only"></select>
+        </section>
+
+        <section id="search-section-by-position">
+            <select id="season-introduced-for-position"></select>
+            <select id="position-introduced">
+                <option value="PG">POINT GUARD</option>
+                <option value="SG">SHOOTING GUARD</option>
+                <option value="SF">SMALL FORWARD</option>
+                <option value="PF">POWER FORWARD</option>
+                <option value="C">CENTER</option>
+            </select>
+        </section>
+
+        <section id="search-section-team-season">
+            <select id="season-introduced-for-team"></select>
+            <select id="team-introduced">
+            </select>
+        </section>
+
+        <section id="team-squads"></section>
+
+        <section id="player-list"></section>
+
+        <section id="fav-players">
+            <div id="pg"><h2>POINT GUARD</h2></div>
+            <div id="sg"><h2>SHOOTING GUARD</h2></div>
+            <div id="sf"><h2>SMALL FORWARD</h2></div>
+            <div id="pf"><h2>POWER FORWARD</h2></div>
+            <div id="c"><h2>CENTER</h2></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Derechos reservados, copyright</p>
+    </footer>
+
+</body>
+
+</html>

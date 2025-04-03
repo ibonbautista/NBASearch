@@ -1,0 +1,12 @@
+FUNCIONALIDAD
+- Name tecleando
+- Año seleccionado Año
+- posicion
+- Llamadas a la API por equipo
+
+
+ESTETICA
+- Botones de busqueda
+- Input de busqueda
+- Tarjeta de los teams
+- Grid de los teams
