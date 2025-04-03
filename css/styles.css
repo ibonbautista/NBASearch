@@ -1,15 +1,317 @@
-*{
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Rubik', sans-serif;
+
+    line-height: 1.5;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    display: inline-block;
+}
+
+/*END RESET*/
+
+/*VARIABLES*/
+:root {
+    --header-color: #0040A2;
+    --search-color: #000000;
+    --main: #6b6868;
+    --text: white;
+    --background: black;
+    --strongPrimary: #c38a37;
+    --weakPrimary: #eabe71;
+    --strongSecondary: #2f6568;
+    --weakSecondary: #7d9ea2;
+    --hover: lightgray;
+}*{
     margin: 0%;
     padding: 0%;
 }
+/*END VARIABLES*/
 
-.team-shield{
-    background-color: beige;
-    width: 5%;
-    height: 5%;
+/* BODY */
+body{
+    overflow-x: hidden;
+}
+/*HEADER*/
+header{
+    background-color: var(--header-color);
+    text-align: center;
+    width: 100vw;
+    padding: .5em 0;
+}
+header img{
+    width: 20%;
+    max-width: 200px;
 }
 
-.player-attributes img{
+/* MAIN */
+main{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100vw;
+    background-color: var(--main);
+    min-height: 50vh;
+}
+/*SEARCH ZONE*/
+#search-controls{
+    background-color: var(--search-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.7em;
+    width: 100%;
+    padding: 1.5em;
+}
+#search-controls button {
+    font-size: 1.5rem;
+    background-color: white;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    width: 40%;
+    max-width: 200px;
+    padding: .5em;
+}
+#search-controls button:hover {
+    background-color: rgb(212, 5, 5);
+}
+/* TO DO => color para cuando este seleccionado */
+
+#search-section-by-name,
+#search-section-by-season,
+#search-section-by-position,
+#search-section-team-season{
+    background-color: var(--search-color);
+    text-align: center;
+    padding-bottom: 1em;
+    width: 100vw;
+}
+#name-introduced{
+    background-color: white;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    padding: .5em 1em;
+}
+#search-section-by-season select, #search-section-by-position select, #search-section-team-season select {
+    background-color: white;
+    color: #6b6868;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    padding: .5em 1em;
+    appearance: none;
+}
+/* TO DO => retocar selects, tamaño lista desplegable */
+
+
+/*PLANILLA DE PLANTILLAS*/
+#team-squads{
+    background-color: var(--main);
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(125px,1fr));
+    max-width: 1500px;
+    gap: 1em;
+    padding: 2em;
+}
+.team-shield{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 2px solid black;
+    border-radius: 10%;
+    padding: .5em;
+    background-color: white;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+.team-shield:hover{
+    scale: 110%;
+    padding: .5em;
+    background-color: transparent;
+}
+/* TO DO => buscar escudos mejores */
+
+/* PLAYER LIST */
+#player-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    max-width: 1500px;
+    gap: 1em;
+    padding: 2em;
+}
+.card{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: .5em;
+}
+
+/* FAVS */
+#pg{
+    background-color: white;
+}
+#sg{
+    background-color: black;
+}
+#sf{
+    background-color: red;
+}
+#pf{
+    background-color: green;
+}
+#c{
+    background-color: yellow;
+}
+
+/* FOOTER */
+footer{
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+
+
+.player-attributes img {
     background-color: beige;
     width: 5%;
     height: 5%;

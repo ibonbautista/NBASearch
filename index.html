@@ -10,11 +10,12 @@
 </head>
 
 <body>
+    <header>
+        <img src="./assets/logo.png" alt="logo NBA" id="logoNBA"/>
+        <button id="fav-section"></button>
+    </header>
+
     <main>
-        <header>
-            <h2>NBA STATISTICS</h2>
-        </header>
-        
         <section id="search-controls">
             <button id="search-name" value="name">Name</button>
             <button id="search-season" value="season">Season</button>
@@ -23,7 +24,7 @@
         </section>
 
         <section id="search-section-by-name">
-            <input type="text" id="name-introduced" placeholder="Introduce a name">
+            <input type="text" id="name-introduced" placeholder="Introduce a name...">
         </section>
 
         <section id="search-section-by-season">
@@ -47,13 +48,23 @@
             </select>
         </section>
 
-        <section id="team-squads">
+        <section id="team-squads"></section>
+
+        <section id="player-list"></section>
+
+        <section id="fav-players">
+            <div id="pg"><h3>Point Guard</h3></div>
+            <div id="sg"><h3>Shooting Guard</h3></div>
+            <div id="sf"><h3>Small Forward</h3></div>
+            <div id="pf"><h3>Power Forward</h3></div>
+            <div id="c"><h3>Center</h3></div>
         </section>
 
-        <section id="player-list">
-
-        </section>
     </main>
+
+    <footer>
+        <p>Derechos reservados, patenete en tramite</p>
+    </footer>
 
 </body>
 

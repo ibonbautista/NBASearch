@@ -8,4 +8,6 @@ const teamNames = ["Atlanta Hawks","Boston Celtics","Brooklyn Nets","Charlotte H
     "Miami Heat","Milwakee Bucks","Minnesotta Timberwolves","New Orleans Pelicans","New York Knicks","Oklahoma City Thunder","Orlando Magic",
     "Philadelphia 76ers","Phoenix Suns","Portland Trail Blazers","Sacramento Kings","San Antonio Spurs","Toronto Raptors","Utah Jazz","Washington Wizards"];
 
-export {shields, teamNames};
+const favPlayers = [];
+
+export {shields, teamNames, favPlayers };

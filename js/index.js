@@ -1,7 +1,7 @@
 import { PlayerHTML, NbaHTML } from "./playerHTML.js";
 import { searchDataByName, searchDataBySeason, searchDataByPosition, searchDataCurrentSquad, searchDataByTeam } from "./api.js";
 import { shields, teamNames } from "./data.js";
-import { saveToLocalStorage } from "./localStorage.js";
+import { saveToLocalStorage} from "./localStorage.js";
 
 
 //ZONE TO GET SECTION
@@ -16,13 +16,17 @@ let searchTeamSection = "";
 let teamsList = "";
 let playerList = "";
 let myNbaHTML = "";
+let logoNBA = "";
 
 //FUNCTION TO INITIALIZE BASIC LAYERS OF PAGE
 function main(){
 
     //GET SECTION FOR SHOW INFO FROM THE API
+    logoNBA = document.getElementById("logoNBA");
     playerList = document.getElementById("player-list");
     myNbaHTML = new NbaHTML("Lista jugadores",playerList);
+    const showFavs = document.getElementById("fav-section");
+    const favPlayers = document.getElementById("fav-players");
 
     //HOME BUTTONS AND INPUTS => BY DEFAULT SEARCH BY NAME
     searchName = document.getElementById("search-name");
@@ -38,12 +42,15 @@ function main(){
     searchSeasonSection.style.display = "none";
     searchPositionSection.style.display = "none";
     searchTeamSection.style.display = "none"; 
+    favPlayers.style.display = "none"; 
     
     //HOME TEAMS
     teamsList = document.getElementById("team-squads");
     for(let i=0; i<shields.length; i++){
         const teamShield = document.createElement("img");
         teamShield.setAttribute("src","./assets/"+shields[i]+".png");
+        teamShield.setAttribute("alt","Logo " + shields[i]);
+        teamShield.setAttribute("loading","lazy");
         teamShield.classList.add("team-shield");
         teamShield.addEventListener("click", () => {
             teamsList.style.display = "none";
@@ -55,7 +62,22 @@ function main(){
 }
 main();
 
-    
+logoNBA.addEventListener("click",()=>{
+    searchNameSection.style.display = "block";
+    searchSeasonSection.style.display = "none";
+    searchPositionSection.style.display = "none";
+    searchTeamSection.style.display = "none";
+    favPlayers.style.display = "none";
+   
+    teamsList.style.display = "grid";
+    playerList.innerHTML="";
+    searchNameInput.value = "";
+    searchSeasonInputOnly.value = "";
+    searchSeasonForPosition.value = "";
+    searchPositionInput.value = "";
+
+})
+
 //SEARCH BY NAME ZONE
 const searchNameInput = document.getElementById("name-introduced");
 searchName.addEventListener("click",()=>{
@@ -63,10 +85,10 @@ searchName.addEventListener("click",()=>{
     searchSeasonSection.style.display = "none";
     searchPositionSection.style.display = "none";
     searchTeamSection.style.display = "none";
-    console.log("hola");
 })
 searchNameInput.addEventListener("input", async () => {
     const playerSearched = searchNameInput.value.trim();
+    console.log(playerSearched);
     teamsList.style.display = "none";
     playerList.innerHTML="";
     searchDataByName(playerSearched,myNbaHTML);
@@ -127,6 +149,83 @@ searchPositionInput.addEventListener("change", async () => {
 
 //SEARCH BY TEAM ZONE
 
+//SHOW FAVS
+const showFavs = document.getElementById("fav-section");
+const favPlayers = document.getElementById("fav-players");
+showFavs.addEventListener("click",()=>{
+    //favPlayers.innerHTML="";
+    //showFavsLayer();
+    searchNameSection.style.display = "block";
+    searchSeasonSection.style.display = "none";
+    searchPositionSection.style.display = "none";
+    searchTeamSection.style.display = "none";
+    teamsList.style.display = "none";
+    playerList.innerHTML="";
+    searchNameInput.value = "";
+    searchSeasonInputOnly.value = "";
+    searchSeasonForPosition.value = "";
+    searchPositionInput.value = "";
+    favPlayers.style.display = "block";
+
+    /* const pgDiv = document.getElementById("pg");
+    const pgpos =JSON.parse(localStorage.getItem("pointGuardFav"));
+    makeFavCard(pgDiv,pgpos);
+    const sgDiv = document.getElementById("sg");
+    const sgpos = JSON.parse(localStorage.getItem("shootingGuardFav"));
+    makeFavCard(sgDiv,sgpos);
+    const sfDiv = document.getElementById("sf");
+    const sfpos = JSON.parse(localStorage.getItem("smallForwardFav"));
+    makeFavCard(sfDiv,sfpos);
+    const pfDiv = document.getElementById("pf");
+    const pfpos = JSON.parse(localStorage.getItem("powerForwardFav"));
+    makeFavCard(pfDiv,pfpos);
+    const cDiv = document.getElementById("c");
+    const cpos = JSON.parse(localStorage.getItem("centerFav"));
+    makeFavCard(cDiv,cpos);
+    
+    function makeFavCard(div,position){
+        const title = document.createElement("h3");
+        title.textContent = position.name;
+        const attributeList = document.createElement("ul");
+        attributeList.classList.add("fav-player-attributes");
+        const attributeSeason = document.createElement("li");
+        attributeSeason.classList.add("attribute", "season");
+        attributeSeason.textContent = "Season: " + position.season;
+        const attributePosition = document.createElement("li");
+        attributePosition.classList.add("attribute", "position");
+        attributePosition.textContent = "Position: " + position.position;
+        const attributeTeam = document.createElement("li");
+        attributeTeam.classList.add("attribute", "team");
+        attributeTeam.textContent = position.team;
+        //PUT ATTRIBUTES IN THE LIST IN ORDER
+        attributeList.append(title, attributeSeason, attributePosition, attributeTeam);
+        //PUT TITLE AND ATRIBUTE LIST TO MAKE CARDS
+        div.appendChild(title);
+        div.appendChild(attributeList);
+    } */
+
+    //CREATE A BUTTON TO ADD IN FAVS, SAME BUTTON WITH SAME UTILITIES
+    //const favButton = document.createElement("button");
+    //favButton.classList.add("fav-button");
+    //const isFav = findInLocalStorageArray(favPlayers, playerFav);
+    //if(!isFav){
+      //  favButton.textContent = "FAV";
+        //favButton.addEventListener("click", () => {
+          //  saveToLocalStorage(this.playerName,this.position,this.team,this.season);
+            //favButton.textContent = "elegido";
+        //})
+    //}else{
+      //  favButton.textContent = "elegido";
+        //favButton.addEventListener("click",()=>{
+          //  console.log("sacame de aqui");
+        //})
+    //}
+    
+    
+    
+})
+
+
 /*
 
     const seasonAndPosition = document.getElementById("season-introduced-for-position");
@@ -160,10 +259,6 @@ searchPositionInput.addEventListener("change", async () => {
     }
 }
 
-
-
-
-
 const searchTeam = document.getElementById("search-team");
 const searchTeamSection = document.getElementById("search-section-team-season");
 searchTeam.addEventListener("click",()=>{
@@ -172,43 +267,6 @@ searchTeam.addEventListener("click",()=>{
     searchPositionSection.style.display = "none";
     searchTeamSection.style.display = "block"; 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*const buttonFav = document.getElementById("fav");
-    buttonFav.addEventListener("click",()=>{
-        console.log("hola");
-        const player = document.getElementById("atributteList");
-    console.log(player);
-    saveToLocalStorage("playerFav",player);
-    console.log(localStorage.getItem("playerFav"));
 })*/
 
 
