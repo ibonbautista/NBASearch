@@ -165,7 +165,7 @@ showFavs.addEventListener("click",()=>{
     searchSeasonInputOnly.value = "";
     searchSeasonForPosition.value = "";
     searchPositionInput.value = "";
-    favPlayers.style.display = "block";
+    favPlayers.style.display = "grid";
 
     /* const pgDiv = document.getElementById("pg");
     const pgpos =JSON.parse(localStorage.getItem("pointGuardFav"));

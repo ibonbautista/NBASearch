@@ -177,10 +177,23 @@ header{
     text-align: center;
     width: 100vw;
     padding: .5em 0;
+    position: relative;
 }
 header img{
     width: 20%;
     max-width: 200px;
+}
+header button{
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    background-color: white;
+    padding: 1em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+header button:hover{
+    background-color: rgb(209, 190, 20);
 }
 
 /* MAIN */
@@ -210,9 +223,10 @@ main{
     width: 40%;
     max-width: 200px;
     padding: .5em;
+    cursor: pointer;
 }
 #search-controls button:hover {
-    background-color: rgb(212, 5, 5);
+    background-color: rgb(209, 190, 20);
 }
 /* TO DO => color para cuando este seleccionado */
 
@@ -265,7 +279,7 @@ main{
 .team-shield:hover{
     scale: 110%;
     padding: .5em;
-    background-color: transparent;
+    background-color: rgb(15, 15, 15);
 }
 /* TO DO => buscar escudos mejores */
 
@@ -277,29 +291,79 @@ main{
     gap: 1em;
     padding: 2em;
 }
+.player-attributes{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.player-attributes li{
+    width: 100%;
+}
+.player-attributes img{
+    min-width: 125px;
+    object-fit: cover;
+}
 .card{
     background-color: white;
     border: 2px solid black;
     border-radius: 15px;
-    padding: .5em;
+    padding: 1em;
+    display: flex;
+    flex-flow: column;
+    gap: .6em;
+    height: auto;
+}
+.card h3{
+    text-align: center;
+    font-weight: bold;
+}
+.card button{
+    text-align: center;
+    position: relative;
+    font-size: 1em;
+    padding: .7em;
+    margin-bottom: .5em;
+}
+.card button:hover{
+    cursor: pointer;
+    background-color: #000000;
+    color: white;
 }
 
 /* FAVS */
-#pg{
+#fav-players{
+    background-color: #c38a37;
+    border: 2px solid white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
+    max-width: 1500px;
+    gap: 1em;
+    text-align: center;
+    padding: 2em;
+    margin: 1em 2.5em 3.8em 2.5em;
+    min-height: 350px;
+}
+#pg,#sg,#sf,#pf,#c{
     background-color: white;
+    border: 2px solid black;
+    padding: .7em;
+    font-size: 1.5em;
 }
-#sg{
-    background-color: black;
+#pg img,#sg img,#sf img,#pf img,#c img{
+    width: 50%;
+    height: 50%;
+    margin-top: 2em;
 }
-#sf{
-    background-color: red;
+#fav-players h2{
+    font-size: 1.1rem;
+    margin-top: 2em;
+    font-weight: bold;
 }
-#pf{
-    background-color: green;
+#fav-players h3{
+    font-size: 1.5rem;
+    margin-top: 2em;
 }
-#c{
-    background-color: yellow;
-}
+
 
 /* FOOTER */
 footer{
@@ -307,12 +371,4 @@ footer{
     color: white;
     text-align: center;
     padding: 1em;
-}
-
-
-
-.player-attributes img {
-    background-color: beige;
-    width: 5%;
-    height: 5%;
 }

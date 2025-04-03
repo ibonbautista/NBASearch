@@ -50,19 +50,13 @@ class PlayerHTML extends Player{
         //CREATE A BUTTON TO ADD IN FAVS, SAME BUTTON WITH SAME UTILITIES
         const favButton = document.createElement("button");
         favButton.classList.add("fav-button");
-        //const isFav = findInLocalStorageArray(favPlayers, playerFav);
-        //if(!isFav){
-            favButton.textContent = "FAV";
+            favButton.textContent = "Choose";
             favButton.addEventListener("click", () => {
                 saveToLocalStorage(this.playerName,this.position,this.team,this.season);
-                favButton.textContent = "elegido";
+                favButton.textContent = "CHOOSED";
+                favButton.style.backgroundColor = "black";
+                favButton.style.color = "white";
             })
-        //}else{
-          //  favButton.textContent = "elegido";
-            //favButton.addEventListener("click",()=>{
-              //  console.log("sacame de aqui");
-            //})
-        //}
         
         //CREATE ALL OF LIST WITH THE ATTRIBUTES WE CHOOSE
         const attributeName = document.createElement("li");
@@ -128,8 +122,7 @@ class PlayerHTML extends Player{
         
         //TO DO => RECOGER LOS EQUIPOS MAL PUESTOS PARA QUE SALGAN TODAS LAS IMAGENES
         const attributeTeam = document.createElement("li");
-        attributeTeam.classList.add("attribute", "team");
-        attributeTeam.textContent = "Team: " + this.team;
+        
         const attributeTeamImage = document.createElement("li");
         const teamImage = document.createElement("img");
         if(this.team === "TOT"){
