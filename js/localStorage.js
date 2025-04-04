@@ -3,46 +3,46 @@
 //CREATE DEFAULT POSITIONS OF LOCALSTORAGE
 if(!localStorage.getItem("pointGuardFav")){
 	const playerFav = {
-		name: "",
+		name: "Choose PG",
 		position: "PG",
-		team: "",
-		season: 0,
+		team: "Without team",
+		season: "No season",
 	  };
 	localStorage.setItem('pointGuardFav', JSON.stringify(playerFav));
 }
 if(!localStorage.getItem("shootingGuardFav")){
 	const playerFav = {
-		name: "",
+		name: "Choose SG",
 		position: "SG",
-		team: "",
-		season: 0,
+		team: "Without team",
+		season: "No season",
 	  };
 	  localStorage.setItem('shootingGuardFav', JSON.stringify(playerFav));
 }
 if(!localStorage.getItem("smallForwardFav")){
 	const playerFav = {
-		name: "",
+		name: "Choose SF",
 		position: "SF",
-		team: "",
-		season: 0,
+		team: "Without team",
+		season: "No season",
 	  };
 	  localStorage.setItem('smallForwardFav', JSON.stringify(playerFav));
 }
 if(!localStorage.getItem("powerForwardFav")){
 	const playerFav = {
-		name: "",
+		name: "Choose PF",
 		position: "PF",
-		team: "",
-		season: 0,
+		team: "Without team",
+		season: "No season",
 	  };
 	  localStorage.setItem('powerForwardFav', JSON.stringify(playerFav));
 }
 if(!localStorage.getItem("centerFav")){
 	const playerFav = {
-		name: "",
-		position: "c",
-		team: "",
-		season: 0,
+		name: "Choose C",
+		position: "C",
+		team: "Without team",
+		season: "No season",
 	  };
 	  localStorage.setItem('centerFav', JSON.stringify(playerFav));
 }
@@ -90,6 +90,7 @@ attributeSeasonPg.textContent = "Season: " + JSON.parse(localStorage.pointGuardF
 const attributeTeamPg = document.createElement("li");
 const teamImagePg = document.createElement("img");
 teamImagePg.setAttribute("src",`./assets/${JSON.parse(localStorage.pointGuardFav).team}.png`);
+teamImagePg.setAttribute("alt",`Point Guards`);
 attributeTeamPg.classList.add("attribute", "team");
 attributeTeamPg.append(teamImagePg);
 attributeListPg.append(titlePg, attributeSeasonPg, attributeTeamPg);
@@ -107,6 +108,7 @@ attributeSeasonSg.textContent = "Season: " + JSON.parse(localStorage.shootingGua
 const attributeTeamSg = document.createElement("li");
 const teamImageSg = document.createElement("img");
 teamImageSg.setAttribute("src",`./assets/${JSON.parse(localStorage.shootingGuardFav).team}.png`);
+teamImageSg.setAttribute("alt",`Shooting Guards`);
 attributeTeamSg.classList.add("attribute", "team");
 attributeTeamSg.append(teamImageSg);
 attributeListSg.append(titleSg, attributeSeasonSg, attributeTeamSg);
@@ -124,6 +126,7 @@ attributeSeasonSf.textContent = "Season: " + JSON.parse(localStorage.smallForwar
 const attributeTeamSf = document.createElement("li");
 const teamImageSf = document.createElement("img");
 teamImageSf.setAttribute("src",`./assets/${JSON.parse(localStorage.smallForwardFav).team}.png`);
+teamImageSf.setAttribute("alt",`Small Forwards`);
 attributeTeamSf.classList.add("attribute", "team");
 attributeTeamSf.append(teamImageSf);
 attributeListSf.append(titleSf, attributeSeasonSf, attributeTeamSf);
@@ -141,6 +144,7 @@ attributeSeasonPf.textContent = "Season: " + JSON.parse(localStorage.powerForwar
 const attributeTeamPf = document.createElement("li");
 const teamImagePf = document.createElement("img");
 teamImagePf.setAttribute("src",`./assets/${JSON.parse(localStorage.powerForwardFav).team}.png`);
+teamImagePf.setAttribute("alt",`Power Forwards`);
 attributeTeamPf.classList.add("attribute", "team");
 attributeTeamPf.append(teamImagePf);
 attributeListPf.append(titlePf, attributeSeasonPf, attributeTeamPf);
@@ -158,23 +162,10 @@ attributeSeasonC.textContent = "Season: " + JSON.parse(localStorage.centerFav).s
 const attributeTeamC = document.createElement("li");
 const teamImageC = document.createElement("img");
 teamImageC.setAttribute("src",`./assets/${JSON.parse(localStorage.centerFav).team}.png`);
+teamImageC.setAttribute("alt",`Center`);
 attributeTeamC.classList.add("attribute", "team");
 attributeTeamC.append(teamImageC);
 attributeListC.append(titleC, attributeSeasonC, attributeTeamC);
 cDiv.append(attributeListC);
-
-// Eliminar libros del array guardado en LocalStorage
-function removeFromLocalStorageArray (toberead, book) {
-	const array = getFromLocalStorage(toberead);
-	if (!array) {
-		return;
-	}
-	const index = array.findIndex(element => element.id === book.id);
-	if (index === -1) {
-		return;
-	}
-	array.splice(index, 1);
-	saveToLocalStorage(toberead, array);
-}
 
 export { saveToLocalStorage };
