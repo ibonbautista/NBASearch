@@ -163,7 +163,7 @@ showFavs.addEventListener("click",()=>{
     searchNameInput.value = "";
     searchSeasonInputOnly.value = "2025";
     searchSeasonForPosition.value = "2025";
-    searchPositionInput.value = "Choose Position";
+    //searchPositionInput.value = "";
     favPlayers.style.display = "grid";
 })
 
