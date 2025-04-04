@@ -161,9 +161,9 @@ showFavs.addEventListener("click",()=>{
     teamsList.style.display = "none";
     playerList.innerHTML="";
     searchNameInput.value = "";
-    searchSeasonInputOnly.value = "";
-    searchSeasonForPosition.value = "";
-    searchPositionInput.value = "";
+    searchSeasonInputOnly.value = "2025";
+    searchSeasonForPosition.value = "2025";
+    searchPositionInput.value = "Choose Position";
     favPlayers.style.display = "grid";
 })
 
