@@ -163,18 +163,4 @@ attributeTeamC.append(teamImageC);
 attributeListC.append(titleC, attributeSeasonC, attributeTeamC);
 cDiv.append(attributeListC);
 
-// Eliminar libros del array guardado en LocalStorage
-function removeFromLocalStorageArray (toberead, book) {
-	const array = getFromLocalStorage(toberead);
-	if (!array) {
-		return;
-	}
-	const index = array.findIndex(element => element.id === book.id);
-	if (index === -1) {
-		return;
-	}
-	array.splice(index, 1);
-	saveToLocalStorage(toberead, array);
-}
-
 export { saveToLocalStorage };
