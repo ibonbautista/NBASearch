@@ -72,9 +72,8 @@ logoNBA.addEventListener("click",()=>{
     teamsList.style.display = "grid";
     playerList.innerHTML="";
     searchNameInput.value = "";
-    searchSeasonInputOnly.value = "";
-    searchSeasonForPosition.value = "";
-    searchPositionInput.value = "";
+    searchSeasonInputOnly.value = "2025";
+    searchSeasonForPosition.value = "2025";
 
 })
 
